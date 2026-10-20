@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOCKEY — Living In Leggings</title>
+  
+  <!-- Premium Google Fonts fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       Font Specifications:
+       1. Gotham Condensed Bold for header
+       2. Gotham Book for rest
+       3. Gotham Black for titles
+       ========================================================================== */
+
+    @font-face {
+      font-family: 'Gotham Condensed';
+      src: local('Gotham Condensed Bold'), local('GothamCond-Bold'), url('Fonts/GothamCond-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gotham Condensed';
+      src: local('Gotham Condensed Black'), local('GothamCond-Black'), url('Fonts/GothamCond-Black.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gotham Book';
+      src: local('Gotham Book'), local('Gotham-Book'), url('Fonts/Gotham Book.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gotham Black';
+      src: local('Gotham Black'), local('Gotham-Black'), local('Gotham Ultra'), local('Gotham-Ultra'), url('Fonts/Gotham Ultra.otf') format('opentype'), url('Fonts/Gotham Bold.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gotham Bold';
+      src: local('Gotham Bold'), local('Gotham-Bold'), url('Fonts/Gotham Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #d6d3cc;
+      font-family: 'Gotham Book', 'Gotham', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 400;
+      color: #1a1a1a;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 30px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Main Email Wrapper */
+    .email-wrapper {
+      max-width: 650px;
+      width: 100%;
+      background-color: #ede8df;
+      margin: 0 auto;
+
+      overflow: hidden;
+    }
+
+    /* Top Brand Bar */
+    .top-bar {
+      background-color: #ffffff;
+      padding: 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid #e5e0d7;
+    }
+
+    .brand-logo-link {
+      display: inline-block;
+      line-height: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .brand-logo-link:hover {
+      opacity: 0.85;
+    }
+
+    .brand-logo-img {
+      max-width: 175px;
+      width: 100%;
+      height: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* Hero Banner with Background Image */
+    .hero-banner {
+      position: relative;
+      background-image: 
+        linear-gradient(180deg, rgba(20, 26, 18, 0.45) 0%, rgba(15, 20, 15, 0.65) 100%),
+        url('Assets/hero-bg.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding: 54px 28px 48px;
+      text-align: center;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Gotham Book', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: #ede8df;
+      margin-bottom: 12px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    /* 1. Gotham Condensed bold for header */
+    .hero-headline {
+      font-family: 'Gotham Condensed', 'Arial Narrow', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      line-height: 1.02;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+    }
+
+    /* 2. Gotham book for rest */
+    .hero-subheadline {
+      font-family: 'Gotham Book', 'Gotham', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #f7f4ee;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Gotham Black', 'Gotham Ultra', 'Gotham Bold', sans-serif;
+      background-color: #0d1527;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 0;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #243049;
+    }
+
+    /* Section Container */
+    .catalog-container {
+      padding: 24px 20px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Editorial Promo Box (Reference Style) */
+    .promo-card {
+      background-color: #dfd8cc;
+      border: 1px solid #d2cbbe;
+      padding: 26px 20px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Inner framed plaque look matching reference */
+    .promo-card-inner {
+      background-color: #f7f4ee;
+      border: 1px solid #cfc7b9;
+      padding: 24px 20px 20px;
+      margin: -6px -2px;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES */
+    .promo-category-code {
+      font-family: 'Gotham Black', 'Gotham Bold', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #726b5d;
+      margin-bottom: 6px;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES */
+    .promo-title {
+      font-family: 'Gotham Black', 'Gotham Ultra', 'Gotham Bold', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #111111;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    /* 2. Gotham book for rest */
+    .promo-description {
+      font-family: 'Gotham Book', 'Gotham', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #4a453d;
+      max-width: 440px;
+      margin: 0 auto 10px;
+      font-weight: 400;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES */
+    .promo-products-tag {
+      display: inline-block;
+      font-family: 'Gotham Black', 'Gotham Bold', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #222222;
+      background-color: rgba(0, 0, 0, 0.06);
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+
+    .promo-btn-container {
+      margin-top: 4px;
+    }
+
+    .btn-promo {
+      display: inline-block;
+      font-family: 'Gotham Black', 'Gotham Ultra', 'Gotham Bold', sans-serif;
+      background-color: #0d1527;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      padding: 10px 26px;
+      border-radius: 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-promo:hover {
+      background-color: #222d42;
+    }
+
+    /* 2. Gotham book for rest */
+    .promo-caption {
+      display: block;
+      margin-top: 7px;
+      font-family: 'Gotham Book', 'Gotham', sans-serif;
+      font-size: 11px;
+      color: #645e52;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+
+    /* Product Image Grids */
+    .image-grid {
+      display: grid;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .grid-2-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3-col {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Image Tile with Bottom-Left Editorial Overlay */
+    .image-tile {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-color: #dcd7ce;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+    }
+
+    .image-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .image-tile:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Gradient Scrim for Legibility */
+    .image-tile::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.25) 60%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES (Product Overlays) */
+    .tile-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      font-family: 'Gotham Black', 'Gotham Ultra', 'Gotham Bold', sans-serif;
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      z-index: 2;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+    }
+
+    .tile-overlay .chevron {
+      font-size: 13px;
+      font-weight: 900;
+      transform: translateY(-0.5px);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 38px 20px 32px;
+      text-align: center;
+    }
+
+    .footer-social-wrapper {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES */
+    .footer-social-title {
+      font-family: 'Gotham Black', 'Gotham Bold', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999999;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .social-icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      line-height: 0;
+      opacity: 0.85;
+      transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .social-icon-link:hover {
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+
+    .social-icon-img {
+      width: 100%;
+      height: auto;
+      max-height: 32px;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* 3. GOTHAM BLACK FOR TITLES */
+    .footer-links {
+      font-family: 'Gotham Black', 'Gotham Bold', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-links .divider {
+      color: #444444;
+      margin: 0 10px;
+    }
+
+    /* 2. Gotham book for rest */
+    .footer-copyright {
+      margin-top: 18px;
+      font-family: 'Gotham Book', 'Gotham', sans-serif;
+      font-size: 10.5px;
+      color: #666666;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 0;
+      }
+
+      .email-wrapper {
+        box-shadow: none;
+      }
+
+      .top-bar {
+        padding: 18px 14px;
+      }
+
+      .brand-logo-img {
+        max-width: 145px;
+      }
+
+      .footer-social-icons {
+        gap: 14px;
+      }
+
+      .social-icon-link {
+        width: 30px;
+        height: 30px;
+      }
+
+      .hero-banner {
+        padding: 32px 18px 28px;
+      }
+
+      .hero-headline {
+        font-size: 38px;
+        line-height: 1.06;
+      }
+
+      .hero-subheadline {
+        font-size: 13.5px;
+        margin-bottom: 22px;
+      }
+
+      .catalog-container {
+        padding: 16px 12px 28px;
+        gap: 26px;
+      }
+
+      .promo-card {
+        padding: 20px 14px 18px;
+      }
+
+      .promo-title {
+        font-size: 22px;
+      }
+
+      .grid-2-col {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .grid-3-col {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .image-tile {
+        aspect-ratio: 4 / 3.5;
+      }
+
+      .tile-overlay {
+        font-size: 14px;
+        bottom: 12px;
+        left: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="email-wrapper" role="article" aria-roledescription="email">
+    <!-- Top Bar with JOCKEY Logo -->
+    <header class="top-bar">
+      <a href="#" class="brand-logo-link" aria-label="Jockey Home">
+        <img src="Assets/Jockey-logo.png" alt="JOCKEY" class="brand-logo-img" />
+      </a>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-eyebrow">NEW ARRIVALS</div>
+      <h1 class="hero-headline">LIVING IN LEGGINGS</h1>
+      <p class="hero-subheadline">
+        From high-energy workouts to easy days and everything in between, find leggings designed to match how the day unfolds.
+      </p>
+      <a href="#" class="btn-primary">EXPLORE COLLECTION &gt;</a>
+    </section>
+
+    <!-- Product Catalog Sections -->
+    <div class="catalog-container">
+
+      <!-- SECTION 01: Performance (MW12, MW68) - 2 Images -->
+      <section class="section-block">
+        <div class="promo-card promo-card-inner">
+          <div class="promo-category-code">01 &mdash; PERFORMANCE</div>
+          <h2 class="promo-title">SWEAT CONTROL &amp; FRESHNESS</h2>
+          <p class="promo-description">Built for sweat control and lasting freshness through every high-intensity move.</p>
+          <div class="promo-products-tag">PRODUCTS: MW12 &bull; MW68</div>
+          <div class="promo-btn-container">
+            <a href="#" class="btn-promo">SHOP PERFORMANCE &gt;</a>
+          </div>
+          <span class="promo-caption">online only</span>
+        </div>
+
+        <div class="image-grid grid-2-col">
+          <!-- Image 01: MW12 -->
+          <a href="#" class="image-tile">
+            <img src="Assets/01.webp" alt="Performance Leggings MW12" />
+            <div class="tile-overlay">MW12 Performance <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 02: MW68 -->
+          <a href="#" class="image-tile">
+            <img src="Assets/02.webp" alt="Performance Leggings MW68" />
+            <div class="tile-overlay">MW68 High Rise <span class="chevron">&gt;</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 02: Yoga (JW55) - 3 Images (03, 04, 05) -->
+      <section class="section-block">
+        <div class="promo-card">
+          <div class="promo-category-code">02 &mdash; YOGA</div>
+          <h2 class="promo-title">NATURALLY FRESH &amp; SOFT</h2>
+          <p class="promo-description">Tencel&trade; Lyocell fabric that stays naturally fresh, breathable, and buttery soft.</p>
+          <div class="promo-products-tag">PRODUCT: JW55</div>
+          <div class="promo-btn-container">
+            <a href="#" class="btn-promo">SHOP YOGA &gt;</a>
+          </div>
+          <span class="promo-caption">online only</span>
+        </div>
+
+        <div class="image-grid grid-3-col">
+          <!-- Image 03: JW55 Flare / Style 1 -->
+          <a href="#" class="image-tile">
+            <img src="Assets/03.jpg" alt="Yoga Leggings JW55 Flare" />
+            <div class="tile-overlay">JW55 Flare <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 04: JW55 High Rise / Style 2 -->
+          <a href="#" class="image-tile">
+            <img src="Assets/04.jpg" alt="Yoga Leggings JW55 High Rise" />
+            <div class="tile-overlay">JW55 High Rise <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 05: JW55 Ankle / Style 3 -->
+          <a href="#" class="image-tile">
+            <img src="Assets/05.jpg" alt="Yoga Leggings JW55 Ankle" />
+            <div class="tile-overlay">JW55 Ankle Fit <span class="chevron">&gt;</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 03: Work & Weekend (IW05) - 3 Images (06, 07, 08) -->
+      <section class="section-block">
+        <div class="promo-card">
+          <div class="promo-category-code">03 &mdash; WORK &amp; WEEKEND</div>
+          <h2 class="promo-title">VERSATILE TROUSER SILHOUETTE</h2>
+          <p class="promo-description">Trouser silhouette with functional zipper pockets to keep things effortlessly versatile.</p>
+          <div class="promo-products-tag">PRODUCT: IW05</div>
+          <div class="promo-btn-container">
+            <a href="#" class="btn-promo">SHOP WORK &amp; WEEKEND &gt;</a>
+          </div>
+          <span class="promo-caption">online only</span>
+        </div>
+
+        <div class="image-grid grid-3-col">
+          <!-- Image 06: IW05 Trouser -->
+          <a href="#" class="image-tile">
+            <img src="Assets/06.webp" alt="Work & Weekend Leggings IW05 Trouser" />
+            <div class="tile-overlay">IW05 Trouser <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 07: IW05 Slim Fit -->
+          <a href="#" class="image-tile">
+            <img src="Assets/07.webp" alt="Work & Weekend Leggings IW05 Slim Fit" />
+            <div class="tile-overlay">IW05 Slim Fit <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 08: IW05 Zipper Pocket -->
+          <a href="#" class="image-tile">
+            <img src="Assets/08.webp" alt="Work & Weekend Leggings IW05 Zipper Pocket" />
+            <div class="tile-overlay">IW05 Zipper Pocket <span class="chevron">&gt;</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 04: Casual Moments (AW87) - 3 Images (09, 10, 11) -->
+      <section class="section-block">
+        <div class="promo-card">
+          <div class="promo-category-code">04 &mdash; CASUAL MOMENTS</div>
+          <h2 class="promo-title">FLEXIBLE FIT &amp; SMOOTH BAND</h2>
+          <p class="promo-description">A soft, ultra-flexible fit engineered with a seamless, smooth waistband for everyday ease.</p>
+          <div class="promo-products-tag">PRODUCT: AW87</div>
+          <div class="promo-btn-container">
+            <a href="#" class="btn-promo">SHOP CASUAL MOMENTS &gt;</a>
+          </div>
+          <span class="promo-caption">online only</span>
+        </div>
+
+        <div class="image-grid grid-3-col">
+          <!-- Image 09: AW87 Everyday Soft -->
+          <a href="#" class="image-tile">
+            <img src="Assets/09.webp" alt="Casual Moments Leggings AW87 Everyday Soft" />
+            <div class="tile-overlay">AW87 Everyday Soft <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 10: AW87 Smooth Fit -->
+          <a href="#" class="image-tile">
+            <img src="Assets/10.webp" alt="Casual Moments Leggings AW87 Smooth Fit" />
+            <div class="tile-overlay">AW87 Smooth Fit <span class="chevron">&gt;</span></div>
+          </a>
+          <!-- Image 11: AW87 Comfort Waist -->
+          <a href="#" class="image-tile">
+            <img src="Assets/11.webp" alt="Casual Moments Leggings AW87 Comfort Waist" />
+            <div class="tile-overlay">AW87 Comfort Waist <span class="chevron">&gt;</span></div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-social-wrapper">
+        <span class="footer-social-title">Follow Us</span>
+        <div class="footer-social-icons">
+          <a href="#" class="social-icon-link" aria-label="Follow Jockey on Instagram">
+            <img src="Assets/icon-instagram.png" alt="Instagram" class="social-icon-img" />
+          </a>
+          <a href="#" class="social-icon-link" aria-label="Follow Jockey on X">
+            <img src="Assets/icon-x.png" alt="X" class="social-icon-img" />
+          </a>
+          <a href="#" class="social-icon-link" aria-label="Follow Jockey on Facebook">
+            <img src="Assets/icon-facebook.png" alt="Facebook" class="social-icon-img" />
+          </a>
+          <a href="#" class="social-icon-link" aria-label="Follow Jockey on YouTube">
+            <img src="Assets/icon-youtube.png" alt="YouTube" class="social-icon-img" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">PRIVACY POLICY</a>
+        <span class="divider">|</span>
+        <a href="#">UNSUBSCRIBE</a>
+      </div>
+
+      <div class="footer-copyright">
+        &copy; 2026 JOCKEY. All rights reserved.
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+# OS generated files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
